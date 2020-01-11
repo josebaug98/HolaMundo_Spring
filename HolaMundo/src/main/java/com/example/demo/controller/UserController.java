@@ -9,10 +9,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.UserDTO;
+import com.example.demo.models.User;
+import com.example.demo.repository.UserRepository;
 import com.example.demo.services.UserServices;
 
 @RestController
@@ -23,7 +27,6 @@ public class UserController {
 	
 	@Autowired
 	UserServices userServices;
-	
 	
 	@GetMapping("getUsers")
 	public ResponseEntity <?> getUsers(){
@@ -79,5 +82,24 @@ public class UserController {
 		//return userServices.getUsers();
 	
 }
+	@PostMapping("/usuarios")
+	public ResponseEntity<?> create(@RequestBody User user ) {
+		
+		Map<String, Object> response = new HashMap<>();
+		
+		if(user.getName() != null) {
+			response.put("Status: ", "The User was Created Succesfully!");
+			response.put("Data: ", user);
+		}
+		
+		else {
+			response.put("Status: ", "Add a User, please.");
+		}
+
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+
+	}
+
+	
 
 }

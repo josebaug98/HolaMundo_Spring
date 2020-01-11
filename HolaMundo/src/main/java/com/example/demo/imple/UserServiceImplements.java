@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.UserDTO;
+import com.example.demo.models.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.services.UserServices;
 import com.example.demo.converter.UserConverter;
@@ -38,7 +39,13 @@ public class UserServiceImplements implements UserServices {
 		// TODO Auto-generated method stub
 		return userConverter.UsertoUserDTO(userRepository.findByName(name));
 	}
-	
-	
 
+	
+	public User addUser(User user) {
+		// TODO Auto-generated method stub
+		return userRepository.save(user);
+		
+	}
+	
+	
 }

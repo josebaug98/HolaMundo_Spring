@@ -12,5 +12,8 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	
 	@Query("select user from User user where user.name=?1 ")// Nombre del Modelo "User"
 	public User getUserByName(String name);
+	
+	//public User addUser(User user);
+	
 
 }

@@ -17,6 +17,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.JoinColumn;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name="users")
@@ -28,14 +32,19 @@ public class User {
 	
 	@Column(length=45)
 	private String name;
+    
 	@Column(length=45)
 	private String lastname;
+    
 	@Column(length=11)
 	private int age;
+	
 	@Column(length=255)
 	private String password;
+	
 	@Column(nullable=false)
 	private Boolean status;
+	
 	@Column(name="create_date")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
